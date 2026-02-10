@@ -1,0 +1,11 @@
+RewriteEngine On
+# Ensure the base matches your folder name exactly
+RewriteBase /millionaires-hub/
+
+# 1. If someone visits the root, send them to public/
+RewriteRule ^$ public/index.php [L]
+
+# 2. If the request isn't a real file/folder, look for it in /public/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ public/$1 [L]

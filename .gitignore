@@ -1,0 +1,9 @@
+# Ignore OS generated files
+Thumbs.db
+.DS_Store
+
+# Ignore private config files (we will create this later for DB passwords)
+config.php
+
+#ignore my tables.sql
+tables.sql  

@@ -1,0 +1,718 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --header-height: 70px;
+    --footer-height: 70px;
+    --sidebar-width: 220px;
+}
+
+
+body {
+    background: #f4f7f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+    overflow: auto;
+}
+
+/* =========================
+   HEADER (STICKY)
+========================= */
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: #1E3A8A; /* Royal Blue */
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content {
+    width: 90%;
+    max-width: 1200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #D4AF37;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.logo-text:hover {
+    color: #FBBF24;
+    transform: scale(1.03);
+}
+
+.user-nav {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.user-nav span {
+    margin-right: 15px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.btn-logout {
+    background: #D4AF37;
+    color: #1E3A8A;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn-logout:hover {
+    background: #FBBF24;
+}
+
+/* =========================
+   MAIN CONTENT WRAPPER
+========================= */
+.main-wrapper {
+    flex: 1;
+    padding-top: 40px; /* breathing space below header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================
+   LANDING / WELCOME PAGE
+========================= */
+.welcome-container {
+    background: #fff;
+    max-width: 850px;
+    width: 90%;
+    padding: 50px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-top: 8px solid #002366;
+}
+
+.welcome-container h1 {
+    font-size: 2.8rem;
+    color: #002366;
+    margin-bottom: 15px;
+}
+
+.welcome-container h1 span {
+    color: #D4AF37;
+}
+
+.welcome-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.welcome-container button,
+.welcome-container .btn-primary {
+    background: #002366;
+    color: #fff;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.welcome-container button:hover,
+.welcome-container .btn-primary:hover {
+    background: #D4AF37;
+    color: #002366;
+}
+
+/* =========================
+   AUTH PAGES (LOGIN / REGISTER)
+========================= */
+.auth-page-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.container {
+    background: #fff;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.container form {
+    height: 100%;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.container span {
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.container input {
+    width: 100%;
+    background: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+}
+
+.container button {
+    margin-top: 10px;
+    padding: 12px 45px;
+    background: #002366;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.container button:hover {
+    background: #D4AF37;
+    color: #002366;
+}
+
+/* =========================
+   ALERTS (FIXED POSITIONING)
+========================= */
+.alert {
+    position: fixed;        /* Detaches from the layout flow */
+    top: 85px;              /* Positions it just below the 70px header */
+    left: 50%;              /* Move to center */
+    transform: translateX(-50%); /* Perfectly center horizontally */
+    z-index: 10001;         /* Higher than header (9999) */
+    width: 90%;
+    max-width: 400px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Added shadow for "floating" effect */
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-weight: bold;
+    animation: fadein 0.5s;
+
+    @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeout { from { opacity: 1; } to { opacity: 0; } }
+}
+
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #f87171;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #4ade80;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--footer-height);
+
+    background: #1E3A8A;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.85rem;
+    z-index: 1000; /* ABOVE sidebar */
+}
+
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 1.4rem;
+    }
+
+    .user-nav span {
+        display: none;
+    }
+
+    .welcome-container {
+        padding: 30px;
+    }
+
+    .welcome-container h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        width: 95%;
+        min-height: 600px;
+    }
+}
+/* =========================
+   SIDEBAR LAYOUT
+========================= */
+.sidebar {
+    width: var(--sidebar-width);
+    background: #f0f4f8;
+    padding: 25px 15px;
+
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: var(--footer-height); /* 👈 KEY FIX */
+
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    z-index: 900;
+}
+
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #1E3A8A;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.sidebar nav ul li a i {
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar nav ul li a:hover {
+    background: #1E3A8A;
+    color: #fff;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.content {
+    position: fixed;
+    top: var(--header-height);
+    left: var(--sidebar-width);
+    right: 0;
+    bottom: var(--footer-height);
+
+    padding: 30px;
+    overflow-y: auto;
+    transition: 0.3s ease;
+}
+
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+.dashboard h1 {
+    margin-bottom: 25px;
+    color: #002366;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-left: 6px solid #1E3A8A;
+}
+
+.card h3 {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #002366;
+}
+
+.card.balance {
+    border-left-color: #16a34a;
+}
+
+.card.danger {
+    border-left-color: #dc2626;
+}
+
+/* =========================
+   SIDEBAR TOGGLE (MOBILE)
+========================= */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 85px;
+    left: 15px;
+    background: #1E3A8A;
+    color: #fff;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    z-index: 10000;
+}
+
+/* =========================
+   MOBILE VIEW
+========================= */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        bottom: 0; /* mobile sidebar can cover footer */
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .content {
+        left: 0;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+}
+/* =========================
+   TRANSACTIONS PAGE STYLING
+========================= */
+
+/* Container adjustments */
+.container h1 {
+    margin-bottom: 25px;
+    color: #002366;
+    text-align: center;
+}
+
+/* Add Transaction Form */
+.container form.card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 6px solid #1E3A8A;
+}
+
+.container form.card h3 {
+    color: #1E3A8A;
+    margin-bottom: 15px;
+}
+
+.container form.card select,
+.container form.card input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.container form.card select:focus,
+.container form.card input:focus {
+    border-color: #1E3A8A;
+    box-shadow: 0 0 5px rgba(30, 58, 138, 0.2);
+}
+
+.container form.card button {
+    width: fit-content;
+    padding: 10px 25px;
+    background: #1E3A8A;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+    align-self: flex-start;
+}
+
+.container form.card button:hover {
+    background: #D4AF37;
+    color: #002366;
+}
+
+/* Transaction History Table */
+/* Make the table container scrollable */
+.container .card {
+    overflow-x: auto; /* allows horizontal scroll if table is too wide */
+}
+
+/* Transaction History Table */
+/* Table wrapper to allow horizontal scroll on small screens */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Transaction Table */
+.table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* prevents compression */
+    table-layout: auto;
+    font-size: 0.95rem;
+}
+
+/* Borders */
+.table-wrapper table th,
+.table-wrapper table td {
+    border: 1px solid #ccc;  /* visible borders */
+    padding: 16px 12px;      /* enough spacing */
+    text-align: left;
+    white-space: nowrap;      /* no line breaks */
+}
+
+/* Header styling */
+.table-wrapper table th {
+    background-color: #f5f5f5;
+    color: #1E3A8A;
+    font-weight: 600;
+}
+
+/* Hover effect */
+.table-wrapper table tr:hover {
+    background-color: #f0f4f8;
+}
+
+/* Buttons inside table (optional) */
+.table-wrapper table td button {
+    padding: 6px 12px;
+    background: #16a34a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.table-wrapper table td button:hover {
+    background: #dc2626;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .table-wrapper table th,
+    .table-wrapper table td {
+        font-size: 0.85rem;
+        padding: 12px 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .table-wrapper table th,
+    .table-wrapper table td {
+        font-size: 0.8rem;
+        padding: 10px 6px;
+    }
+}
+
+/* =========================
+   CATEGORIES PAGE STYLING
+========================= */
+
+/* Category Add Form */
+.container form.card input[type="color"] {
+    width: 60px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.container form.card input[type="color"]:hover {
+    transform: scale(1.1);
+}
+
+/* Categories Table */
+.container .card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.container .card table th,
+.container .card table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.container .card table th {
+    background: #f5f5f5;
+    color: #1E3A8A;
+    font-weight: 600;
+}
+
+.container .card table tr:hover {
+    background: #f0f4f8;
+}
+
+/* Color circle in table */
+.container .card table td span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+/* Action buttons in table */
+.container .card table td button {
+    padding: 6px 12px;
+    background: #dc2626;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.container .card table td button:hover {
+    background: #991b1b;
+}
+
+/* Make each category row border match category color (optional visual cue) */
+.container .card table tbody tr {
+    border-left: 6px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.container .card table tbody tr[data-color] {
+    border-left-color: attr(data-color color, #1E3A8A);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container form.card input[type="color"] {
+        width: 50px;
+        height: 35px;
+    }
+
+    .container .card table th,
+    .container .card table td {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+    }
+
+    .container .card table td button {
+        padding: 5px 10px;
+    }
+}
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+}
+
+.status.pending { background:#fef3c7; color:#92400e; padding:6px 12px; border-radius:20px; }
+.status.done { background:#dcfce7; color:#166534; padding:6px 12px; border-radius:20px; }
+.status.missed { background:#fee2e2; color:#991b1b; padding:6px 12px; border-radius:20px; }
+
+.btn-success {
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:6px 14px;
+    border-radius:6px;
+    cursor:pointer;
+}

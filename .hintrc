@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "border-left-color: attr(data-color color, #1E3A8A)"
+        ]
+      }
+    ]
+  }
+}
