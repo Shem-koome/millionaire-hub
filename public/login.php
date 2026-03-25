@@ -1,36 +1,39 @@
 <?php
 define('APP_STARTED', true);
 require_once __DIR__ . '/../app/middleware/auth.php';
-redirectIfLoggedIn(); 
+redirectIfLoggedIn();
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 $activePanel = (isset($_SESSION['form_type']) && $_SESSION['form_type'] === 'register') ? 'active' : '';
-unset($_SESSION['form_type']); 
-?>
+unset($_SESSION['form_type']);
 
+// Inject auth.css into <head> via header.php hook
+// assets/ is relative to public/ where login.php lives
+$extraStyles = '<link rel="stylesheet" href="assets/css/auth.css">';
+?>
 <?php include '../includes/header.php'; ?>
-<link rel="stylesheet" href="../assets/css/auth.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 
 <div class="auth-page-container">
 
     <?php if (isset($_SESSION['error'])): ?>
         <div class="alert alert-error" id="alert-box">
-            <i class="fa-solid fa-circle-exclamation"></i> <?= $_SESSION['error']; unset($_SESSION['error']); ?>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <?= $_SESSION['error']; unset($_SESSION['error']); ?>
         </div>
     <?php endif; ?>
 
     <?php if (isset($_SESSION['success'])): ?>
         <div class="alert alert-success" id="alert-box">
-            <i class="fa-solid fa-circle-check"></i> <?= $_SESSION['success']; unset($_SESSION['success']); ?>
+            <i class="fa-solid fa-circle-check"></i>
+            <?= $_SESSION['success']; unset($_SESSION['success']); ?>
         </div>
     <?php endif; ?>
 
     <div class="container <?= $activePanel ?>" id="container">
-        
+
         <div class="form-container sign-up">
             <form action="../app/actions/auth/register_action.php" method="POST">
                 <h1>Create Account</h1>
@@ -73,10 +76,11 @@ unset($_SESSION['form_type']);
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
-<script src="../assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 <script>
     const alertBox = document.getElementById('alert-box');
     if (alertBox) {
